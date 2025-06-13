@@ -9,11 +9,16 @@ import traceback
 import requests
 
 # Configuration
-# Use environment variable or default to Downloads folder
-DOWNLOADS_FOLDER = os.getenv('DATA_FOLDER', r'C:\Users\quinn\Downloads')
+# GitHub Actions compatibility
+if os.getenv('GITHUB_ACTIONS'):
+    DOWNLOADS_FOLDER = os.getenv('DATA_FOLDER', './downloads')
+else:
+    DOWNLOADS_FOLDER = os.getenv('DATA_FOLDER', r'C:\Users\quinn\Downloads')
+
 # For GitHub Actions or other environments, use local downloads folder
 if not os.path.exists(DOWNLOADS_FOLDER):
     DOWNLOADS_FOLDER = os.path.join(os.getcwd(), 'downloads')
+    
 BASE_URL = "https://api.hyperliquid.xyz"
 INTERVAL = "30m"  # 30-minute intervals
 
@@ -434,14 +439,39 @@ def main():
     logging.info("Starting Hyperliquid OHLC Data Puller")
     logging.info(f"Tracking {len(ASSETS)} assets")
     logging.info(f"Saving to: {DOWNLOADS_FOLDER}")
-    logging.info(f"Update interval: Every 30 minutes")
 
-    # Check if running in automated mode (environment variable or command line arg)
+    # Check if running in GitHub Actions
+    if os.getenv('GITHUB_ACTIONS'):
+        logging.info("Running in GitHub Actions - single run mode")
+        try:
+            puller = HyperliquidOHLCPuller()
+            
+            # Check if we need initial setup (no existing data files)
+            existing_files = [f for f in os.listdir(DOWNLOADS_FOLDER) if f.endswith('_ohlc_30.csv')]
+            if len(existing_files) == 0:
+                logging.info("No existing data found - running initial setup...")
+                puller.update_all_assets()
+                puller.verify_data_integrity()
+            else:
+                logging.info(f"Found {len(existing_files)} existing data files - running update cycle...")
+                puller.update_all_assets()
+                
+            logging.info("GitHub Actions run completed successfully")
+            return
+            
+        except Exception as e:
+            logging.error(f"Error in GitHub Actions run: {str(e)}")
+            logging.error(traceback.format_exc())
+            import sys
+            sys.exit(1)
+    
+    # Check if running in automated mode (for local use)
     import sys
     automated_mode = '--auto' in sys.argv or os.getenv('AUTO_MODE', '').lower() == 'true'
 
     if automated_mode:
         logging.info("Running in automated mode - starting continuous scheduler...")
+        logging.info(f"Update interval: Every 30 minutes")
         try:
             # Run initial setup if no data exists
             puller = HyperliquidOHLCPuller()
