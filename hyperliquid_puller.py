@@ -11,13 +11,13 @@ import requests
 # Configuration
 # GitHub Actions compatibility
 if os.getenv('GITHUB_ACTIONS'):
-    DOWNLOADS_FOLDER = os.getenv('DATA_FOLDER', './downloads')
+    DOWNLOADS_FOLDER = os.getenv('DATA_FOLDER', './data')
 else:
     DOWNLOADS_FOLDER = os.getenv('DATA_FOLDER', r'C:\Users\quinn\Downloads')
 
-# For GitHub Actions or other environments, use local downloads folder
+# For GitHub Actions or other environments, use local data folder
 if not os.path.exists(DOWNLOADS_FOLDER):
-    DOWNLOADS_FOLDER = os.path.join(os.getcwd(), 'downloads')
+    DOWNLOADS_FOLDER = os.path.join(os.getcwd(), 'data')
     
 BASE_URL = "https://api.hyperliquid.xyz"
 INTERVAL = "30m"  # 30-minute intervals
