@@ -2,7 +2,7 @@ name: Hyperliquid OHLC Data Puller
 
 on:
   schedule:
-    # Runs every 30 minutes
+    # Runs every 30 minutes as requested
     - cron: '*/30 * * * *'
   workflow_dispatch: # Allows manual triggering
 
@@ -44,10 +44,10 @@ jobs:
       
     - name: Run data puller
       env:
-        AUTO_MODE: 'true'
+        GITHUB_ACTIONS: 'true'
         DATA_FOLDER: './downloads'
       run: |
-        python hyperliquid_puller.py --auto
+        python hyperliquid_puller.py
         
     - name: Upload data as artifact
       uses: actions/upload-artifact@v4
