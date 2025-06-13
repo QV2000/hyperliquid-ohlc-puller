@@ -3192,3 +3192,623 @@
 2025-06-13 19:12:38,791 - INFO -    FAILED: 24
 2025-06-13 19:12:38,791 - INFO -    Success rate: 74.2%
 2025-06-13 19:12:38,791 - INFO - GitHub Actions run completed successfully
+2025-06-13 19:35:11,523 - INFO - Starting Hyperliquid OHLC Data Puller
+2025-06-13 19:35:11,523 - INFO - Tracking 93 assets
+2025-06-13 19:35:11,523 - INFO - Saving to: ./data
+2025-06-13 19:35:11,523 - INFO - Running in GitHub Actions - single run mode
+2025-06-13 19:35:11,524 - INFO - Initialized Hyperliquid OHLC Puller
+2025-06-13 19:35:11,524 - INFO - Downloads folder: ./data
+2025-06-13 19:35:11,524 - INFO - Tracking 93 assets
+2025-06-13 19:35:11,525 - INFO - Fetching available symbols from Hyperliquid...
+2025-06-13 19:35:11,826 - INFO - Found 199 available symbols
+2025-06-13 19:35:11,826 - INFO - Available assets: 69/93
+2025-06-13 19:35:11,826 - WARNING - Missing assets: ['ACH (ACH)', 'AXS (AXS)', 'BAKE (BAKE)', 'CHZ (CHZ)', 'EGLD (EGLD)', 'ENJ (ENJ)', 'FLM (FLM)', 'GRT (GRT)', 'ICP (ICP)', 'ICX (ICX)', 'IOTX (IOTX)', 'JASMY (JASMY)', 'KAVA (KAVA)', 'LRC (LRC)', 'MASK (MASK)', 'QNT (QNT)', 'RAD (RAD)', 'RARE (RARE)', 'RAY (RAY)', 'ROSE (ROSE)', 'VET (VET)', 'XVG (XVG)', 'ZEC (ZEC)', 'ZRX (ZRX)']
+2025-06-13 19:35:11,827 - INFO - Found 69 existing data files - running update cycle...
+2025-06-13 19:35:11,827 - INFO - Starting update cycle for 93 assets at 2025-06-13 19:35:11.827151
+2025-06-13 19:35:11,827 - INFO - Processing AAVE (1/93)
+2025-06-13 19:35:11,832 - INFO - Updating AAVE from 2025-06-13 19:29:59
+2025-06-13 19:35:11,832 - INFO - Fetching AAVE (AAVE) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:11,949 - INFO - Websocket connected
+2025-06-13 19:35:12,081 - INFO - Successfully fetched 2 candles for AAVE
+2025-06-13 19:35:12,082 - INFO - Successfully processed 2 candles for AAVE
+2025-06-13 19:35:12,088 - INFO - Merged data for AAVE: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:12,097 - INFO - Saved AAVE data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:12,097 - INFO - SUCCESS: Updated AAVE
+2025-06-13 19:35:13,098 - INFO - Processing ACH (2/93)
+2025-06-13 19:35:13,098 - WARNING - Skipping ACH - not available on Hyperliquid
+2025-06-13 19:35:14,098 - INFO - Processing ADA (3/93)
+2025-06-13 19:35:14,102 - INFO - Updating ADA from 2025-06-13 19:29:59
+2025-06-13 19:35:14,102 - INFO - Fetching ADA (ADA) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:14,319 - INFO - Successfully fetched 2 candles for ADA
+2025-06-13 19:35:14,320 - INFO - Successfully processed 2 candles for ADA
+2025-06-13 19:35:14,326 - INFO - Merged data for ADA: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:14,334 - INFO - Saved ADA data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:14,334 - INFO - SUCCESS: Updated ADA
+2025-06-13 19:35:15,334 - INFO - Processing ALGO (4/93)
+2025-06-13 19:35:15,338 - INFO - Updating ALGO from 2025-06-13 19:29:59
+2025-06-13 19:35:15,339 - INFO - Fetching ALGO (ALGO) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:15,616 - INFO - Successfully fetched 2 candles for ALGO
+2025-06-13 19:35:15,617 - INFO - Successfully processed 2 candles for ALGO
+2025-06-13 19:35:15,623 - INFO - Merged data for ALGO: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:15,631 - INFO - Saved ALGO data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:15,632 - INFO - SUCCESS: Updated ALGO
+2025-06-13 19:35:16,632 - INFO - Processing APE (5/93)
+2025-06-13 19:35:16,635 - INFO - Updating APE from 2025-06-13 19:29:59
+2025-06-13 19:35:16,635 - INFO - Fetching APE (APE) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:16,904 - INFO - Successfully fetched 2 candles for APE
+2025-06-13 19:35:16,906 - INFO - Successfully processed 2 candles for APE
+2025-06-13 19:35:16,911 - INFO - Merged data for APE: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:16,919 - INFO - Saved APE data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:16,919 - INFO - SUCCESS: Updated APE
+2025-06-13 19:35:17,919 - INFO - Processing APT (6/93)
+2025-06-13 19:35:17,923 - INFO - Updating APT from 2025-06-13 19:29:59
+2025-06-13 19:35:17,923 - INFO - Fetching APT (APT) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:18,117 - INFO - Successfully fetched 2 candles for APT
+2025-06-13 19:35:18,118 - INFO - Successfully processed 2 candles for APT
+2025-06-13 19:35:18,123 - INFO - Merged data for APT: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:18,131 - INFO - Saved APT data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:18,131 - INFO - SUCCESS: Updated APT
+2025-06-13 19:35:19,132 - INFO - Processing ARB (7/93)
+2025-06-13 19:35:19,136 - INFO - Updating ARB from 2025-06-13 19:29:59
+2025-06-13 19:35:19,136 - INFO - Fetching ARB (ARB) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:19,390 - INFO - Successfully fetched 2 candles for ARB
+2025-06-13 19:35:19,391 - INFO - Successfully processed 2 candles for ARB
+2025-06-13 19:35:19,397 - INFO - Merged data for ARB: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:19,405 - INFO - Saved ARB data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:19,406 - INFO - SUCCESS: Updated ARB
+2025-06-13 19:35:20,406 - INFO - Processing AR (8/93)
+2025-06-13 19:35:20,409 - INFO - Updating AR from 2025-06-13 19:29:59
+2025-06-13 19:35:20,409 - INFO - Fetching AR (AR) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:20,603 - INFO - Successfully fetched 2 candles for AR
+2025-06-13 19:35:20,605 - INFO - Successfully processed 2 candles for AR
+2025-06-13 19:35:20,610 - INFO - Merged data for AR: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:20,618 - INFO - Saved AR data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:20,618 - INFO - SUCCESS: Updated AR
+2025-06-13 19:35:21,619 - INFO - Processing ATOM (9/93)
+2025-06-13 19:35:21,622 - INFO - Updating ATOM from 2025-06-13 19:29:59
+2025-06-13 19:35:21,622 - INFO - Fetching ATOM (ATOM) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:21,864 - INFO - Successfully fetched 2 candles for ATOM
+2025-06-13 19:35:21,865 - INFO - Successfully processed 2 candles for ATOM
+2025-06-13 19:35:21,870 - INFO - Merged data for ATOM: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:21,878 - INFO - Saved ATOM data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:21,878 - INFO - SUCCESS: Updated ATOM
+2025-06-13 19:35:22,879 - INFO - Processing AVAX (10/93)
+2025-06-13 19:35:22,882 - INFO - Updating AVAX from 2025-06-13 19:29:59
+2025-06-13 19:35:22,882 - INFO - Fetching AVAX (AVAX) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:23,143 - INFO - Successfully fetched 2 candles for AVAX
+2025-06-13 19:35:23,145 - INFO - Successfully processed 2 candles for AVAX
+2025-06-13 19:35:23,150 - INFO - Merged data for AVAX: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:23,158 - INFO - Saved AVAX data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:23,158 - INFO - SUCCESS: Updated AVAX
+2025-06-13 19:35:24,158 - INFO - Processing AXS (11/93)
+2025-06-13 19:35:24,158 - WARNING - Skipping AXS - not available on Hyperliquid
+2025-06-13 19:35:25,159 - INFO - Processing BAKE (12/93)
+2025-06-13 19:35:25,159 - WARNING - Skipping BAKE - not available on Hyperliquid
+2025-06-13 19:35:26,159 - INFO - Processing BCH (13/93)
+2025-06-13 19:35:26,162 - INFO - Updating BCH from 2025-06-13 19:29:59
+2025-06-13 19:35:26,163 - INFO - Fetching BCH (BCH) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:26,425 - INFO - Successfully fetched 2 candles for BCH
+2025-06-13 19:35:26,426 - INFO - Successfully processed 2 candles for BCH
+2025-06-13 19:35:26,431 - INFO - Merged data for BCH: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:26,439 - INFO - Saved BCH data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:26,440 - INFO - SUCCESS: Updated BCH
+2025-06-13 19:35:27,440 - INFO - Processing BNB (14/93)
+2025-06-13 19:35:27,443 - INFO - Updating BNB from 2025-06-13 19:29:59
+2025-06-13 19:35:27,443 - INFO - Fetching BNB (BNB) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:27,716 - INFO - Successfully fetched 2 candles for BNB
+2025-06-13 19:35:27,717 - INFO - Successfully processed 2 candles for BNB
+2025-06-13 19:35:27,722 - INFO - Merged data for BNB: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:27,730 - INFO - Saved BNB data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:27,730 - INFO - SUCCESS: Updated BNB
+2025-06-13 19:35:28,731 - INFO - Processing BONK (15/93)
+2025-06-13 19:35:28,735 - INFO - Updating BONK from 2025-06-13 19:29:59
+2025-06-13 19:35:28,735 - INFO - Fetching BONK (kBONK) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:28,927 - INFO - Successfully fetched 2 candles for BONK
+2025-06-13 19:35:28,929 - INFO - Successfully processed 2 candles for BONK
+2025-06-13 19:35:28,934 - INFO - Merged data for BONK: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:28,943 - INFO - Saved BONK data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:28,943 - INFO - SUCCESS: Updated BONK
+2025-06-13 19:35:29,943 - INFO - Processing BTC (16/93)
+2025-06-13 19:35:29,948 - INFO - Updating BTC from 2025-06-13 19:29:59
+2025-06-13 19:35:29,948 - INFO - Fetching BTC (BTC) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:30,236 - INFO - Successfully fetched 2 candles for BTC
+2025-06-13 19:35:30,237 - INFO - Successfully processed 2 candles for BTC
+2025-06-13 19:35:30,243 - INFO - Merged data for BTC: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:30,251 - INFO - Saved BTC data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:30,251 - INFO - SUCCESS: Updated BTC
+2025-06-13 19:35:31,251 - INFO - Processing CAKE (17/93)
+2025-06-13 19:35:31,255 - INFO - Updating CAKE from 2025-06-13 19:29:59
+2025-06-13 19:35:31,255 - INFO - Fetching CAKE (CAKE) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:31,541 - INFO - Successfully fetched 1 candles for CAKE
+2025-06-13 19:35:31,542 - INFO - Successfully processed 1 candles for CAKE
+2025-06-13 19:35:31,547 - INFO - Merged data for CAKE: 1446 existing + 1 new = 1446 total
+2025-06-13 19:35:31,555 - INFO - Saved CAKE data: 1446 candles from 2025-05-14 17:29:59 to 2025-06-13 19:29:59
+2025-06-13 19:35:31,555 - INFO - SUCCESS: Updated CAKE
+2025-06-13 19:35:32,555 - INFO - Processing CELO (18/93)
+2025-06-13 19:35:32,560 - INFO - Updating CELO from 2025-06-13 18:59:59
+2025-06-13 19:35:32,560 - INFO - Fetching CELO (CELO) candles from 2025-06-13 18:59:59
+2025-06-13 19:35:32,897 - INFO - Successfully fetched 3 candles for CELO
+2025-06-13 19:35:32,898 - INFO - Successfully processed 3 candles for CELO
+2025-06-13 19:35:32,904 - INFO - Merged data for CELO: 1445 existing + 3 new = 1447 total
+2025-06-13 19:35:32,912 - INFO - Saved CELO data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:32,912 - INFO - SUCCESS: Updated CELO
+2025-06-13 19:35:33,913 - INFO - Processing CFX (19/93)
+2025-06-13 19:35:33,917 - INFO - Updating CFX from 2025-06-13 19:29:59
+2025-06-13 19:35:33,917 - INFO - Fetching CFX (CFX) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:34,188 - INFO - Successfully fetched 2 candles for CFX
+2025-06-13 19:35:34,189 - INFO - Successfully processed 2 candles for CFX
+2025-06-13 19:35:34,195 - INFO - Merged data for CFX: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:34,203 - INFO - Saved CFX data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:34,203 - INFO - SUCCESS: Updated CFX
+2025-06-13 19:35:35,203 - INFO - Processing CHZ (20/93)
+2025-06-13 19:35:35,204 - WARNING - Skipping CHZ - not available on Hyperliquid
+2025-06-13 19:35:36,204 - INFO - Processing COMP (21/93)
+2025-06-13 19:35:36,207 - INFO - Updating COMP from 2025-06-13 19:29:59
+2025-06-13 19:35:36,207 - INFO - Fetching COMP (COMP) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:36,449 - INFO - Successfully fetched 2 candles for COMP
+2025-06-13 19:35:36,451 - INFO - Successfully processed 2 candles for COMP
+2025-06-13 19:35:36,455 - INFO - Merged data for COMP: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:36,463 - INFO - Saved COMP data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:36,464 - INFO - SUCCESS: Updated COMP
+2025-06-13 19:35:37,464 - INFO - Processing CRV (22/93)
+2025-06-13 19:35:37,467 - INFO - Updating CRV from 2025-06-13 19:29:59
+2025-06-13 19:35:37,467 - INFO - Fetching CRV (CRV) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:37,736 - INFO - Successfully fetched 2 candles for CRV
+2025-06-13 19:35:37,737 - INFO - Successfully processed 2 candles for CRV
+2025-06-13 19:35:37,742 - INFO - Merged data for CRV: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:37,750 - INFO - Saved CRV data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:37,750 - INFO - SUCCESS: Updated CRV
+2025-06-13 19:35:38,751 - INFO - Processing DOGE (23/93)
+2025-06-13 19:35:38,755 - INFO - Updating DOGE from 2025-06-13 19:29:59
+2025-06-13 19:35:38,755 - INFO - Fetching DOGE (DOGE) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:39,050 - INFO - Successfully fetched 2 candles for DOGE
+2025-06-13 19:35:39,052 - INFO - Successfully processed 2 candles for DOGE
+2025-06-13 19:35:39,057 - INFO - Merged data for DOGE: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:39,066 - INFO - Saved DOGE data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:39,066 - INFO - SUCCESS: Updated DOGE
+2025-06-13 19:35:40,066 - INFO - Processing DOT (24/93)
+2025-06-13 19:35:40,069 - INFO - Updating DOT from 2025-06-13 19:29:59
+2025-06-13 19:35:40,069 - INFO - Fetching DOT (DOT) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:40,349 - INFO - Successfully fetched 2 candles for DOT
+2025-06-13 19:35:40,350 - INFO - Successfully processed 2 candles for DOT
+2025-06-13 19:35:40,355 - INFO - Merged data for DOT: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:40,363 - INFO - Saved DOT data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:40,363 - INFO - SUCCESS: Updated DOT
+2025-06-13 19:35:41,363 - INFO - Processing DYDX (25/93)
+2025-06-13 19:35:41,368 - INFO - Updating DYDX from 2025-06-13 19:29:59
+2025-06-13 19:35:41,368 - INFO - Fetching DYDX (DYDX) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:41,598 - INFO - Successfully fetched 2 candles for DYDX
+2025-06-13 19:35:41,600 - INFO - Successfully processed 2 candles for DYDX
+2025-06-13 19:35:41,605 - INFO - Merged data for DYDX: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:41,613 - INFO - Saved DYDX data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:41,613 - INFO - SUCCESS: Updated DYDX
+2025-06-13 19:35:42,614 - INFO - Processing EGLD (26/93)
+2025-06-13 19:35:42,614 - WARNING - Skipping EGLD - not available on Hyperliquid
+2025-06-13 19:35:43,614 - INFO - Processing ENA (27/93)
+2025-06-13 19:35:43,618 - INFO - Updating ENA from 2025-06-13 19:29:59
+2025-06-13 19:35:43,619 - INFO - Fetching ENA (ENA) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:43,821 - INFO - Successfully fetched 2 candles for ENA
+2025-06-13 19:35:43,823 - INFO - Successfully processed 2 candles for ENA
+2025-06-13 19:35:43,828 - INFO - Merged data for ENA: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:43,836 - INFO - Saved ENA data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:43,837 - INFO - SUCCESS: Updated ENA
+2025-06-13 19:35:44,837 - INFO - Processing ENJ (28/93)
+2025-06-13 19:35:44,837 - WARNING - Skipping ENJ - not available on Hyperliquid
+2025-06-13 19:35:45,837 - INFO - Processing ENS (29/93)
+2025-06-13 19:35:45,841 - INFO - Updating ENS from 2025-06-13 19:29:59
+2025-06-13 19:35:45,841 - INFO - Fetching ENS (ENS) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:46,060 - INFO - Successfully fetched 2 candles for ENS
+2025-06-13 19:35:46,061 - INFO - Successfully processed 2 candles for ENS
+2025-06-13 19:35:46,066 - INFO - Merged data for ENS: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:46,074 - INFO - Saved ENS data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:46,074 - INFO - SUCCESS: Updated ENS
+2025-06-13 19:35:47,075 - INFO - Processing ETC (30/93)
+2025-06-13 19:35:47,078 - INFO - Updating ETC from 2025-06-13 19:29:59
+2025-06-13 19:35:47,078 - INFO - Fetching ETC (ETC) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:47,291 - INFO - Successfully fetched 2 candles for ETC
+2025-06-13 19:35:47,292 - INFO - Successfully processed 2 candles for ETC
+2025-06-13 19:35:47,297 - INFO - Merged data for ETC: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:47,305 - INFO - Saved ETC data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:47,305 - INFO - SUCCESS: Updated ETC
+2025-06-13 19:35:48,306 - INFO - Processing ETH (31/93)
+2025-06-13 19:35:48,309 - INFO - Updating ETH from 2025-06-13 19:29:59
+2025-06-13 19:35:48,309 - INFO - Fetching ETH (ETH) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:48,504 - INFO - Successfully fetched 2 candles for ETH
+2025-06-13 19:35:48,506 - INFO - Successfully processed 2 candles for ETH
+2025-06-13 19:35:48,511 - INFO - Merged data for ETH: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:48,519 - INFO - Saved ETH data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:48,519 - INFO - SUCCESS: Updated ETH
+2025-06-13 19:35:49,519 - INFO - Processing FET (32/93)
+2025-06-13 19:35:49,523 - INFO - Updating FET from 2025-06-13 19:29:59
+2025-06-13 19:35:49,523 - INFO - Fetching FET (FET) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:49,732 - INFO - Successfully fetched 2 candles for FET
+2025-06-13 19:35:49,734 - INFO - Successfully processed 2 candles for FET
+2025-06-13 19:35:49,739 - INFO - Merged data for FET: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:49,747 - INFO - Saved FET data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:49,747 - INFO - SUCCESS: Updated FET
+2025-06-13 19:35:50,747 - INFO - Processing FIL (33/93)
+2025-06-13 19:35:50,750 - INFO - Updating FIL from 2025-06-13 19:29:59
+2025-06-13 19:35:50,750 - INFO - Fetching FIL (FIL) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:50,946 - INFO - Successfully fetched 2 candles for FIL
+2025-06-13 19:35:50,947 - INFO - Successfully processed 2 candles for FIL
+2025-06-13 19:35:50,952 - INFO - Merged data for FIL: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:50,960 - INFO - Saved FIL data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:50,960 - INFO - SUCCESS: Updated FIL
+2025-06-13 19:35:51,960 - INFO - Processing FLM (34/93)
+2025-06-13 19:35:51,961 - WARNING - Skipping FLM - not available on Hyperliquid
+2025-06-13 19:35:52,961 - INFO - Processing FLOKI (35/93)
+2025-06-13 19:35:52,965 - INFO - Updating FLOKI from 2025-06-13 19:29:59
+2025-06-13 19:35:52,965 - INFO - Fetching FLOKI (kFLOKI) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:53,198 - INFO - Successfully fetched 2 candles for FLOKI
+2025-06-13 19:35:53,200 - INFO - Successfully processed 2 candles for FLOKI
+2025-06-13 19:35:53,205 - INFO - Merged data for FLOKI: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:53,214 - INFO - Saved FLOKI data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:53,214 - INFO - SUCCESS: Updated FLOKI
+2025-06-13 19:35:54,214 - INFO - Processing FTT (36/93)
+2025-06-13 19:35:54,218 - INFO - Updating FTT from 2025-06-13 18:59:59
+2025-06-13 19:35:54,218 - INFO - Fetching FTT (FTT) candles from 2025-06-13 18:59:59
+2025-06-13 19:35:54,413 - INFO - Successfully fetched 3 candles for FTT
+2025-06-13 19:35:54,415 - INFO - Successfully processed 3 candles for FTT
+2025-06-13 19:35:54,419 - INFO - Merged data for FTT: 1445 existing + 3 new = 1447 total
+2025-06-13 19:35:54,427 - INFO - Saved FTT data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:54,428 - INFO - SUCCESS: Updated FTT
+2025-06-13 19:35:55,428 - INFO - Processing FXS (37/93)
+2025-06-13 19:35:55,431 - INFO - Updating FXS from 2025-06-13 19:29:59
+2025-06-13 19:35:55,431 - INFO - Fetching FXS (FXS) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:55,623 - INFO - Successfully fetched 2 candles for FXS
+2025-06-13 19:35:55,625 - INFO - Successfully processed 2 candles for FXS
+2025-06-13 19:35:55,629 - INFO - Merged data for FXS: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:55,637 - INFO - Saved FXS data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:55,637 - INFO - SUCCESS: Updated FXS
+2025-06-13 19:35:56,638 - INFO - Processing GALA (38/93)
+2025-06-13 19:35:56,642 - INFO - Updating GALA from 2025-06-13 19:29:59
+2025-06-13 19:35:56,642 - INFO - Fetching GALA (GALA) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:56,848 - INFO - Successfully fetched 2 candles for GALA
+2025-06-13 19:35:56,849 - INFO - Successfully processed 2 candles for GALA
+2025-06-13 19:35:56,855 - INFO - Merged data for GALA: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:56,863 - INFO - Saved GALA data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:56,863 - INFO - SUCCESS: Updated GALA
+2025-06-13 19:35:57,863 - INFO - Processing GMT (39/93)
+2025-06-13 19:35:57,867 - INFO - Updating GMT from 2025-06-13 19:29:59
+2025-06-13 19:35:57,867 - INFO - Fetching GMT (GMT) candles from 2025-06-13 19:29:59
+2025-06-13 19:35:58,077 - INFO - Successfully fetched 2 candles for GMT
+2025-06-13 19:35:58,078 - INFO - Successfully processed 2 candles for GMT
+2025-06-13 19:35:58,084 - INFO - Merged data for GMT: 1446 existing + 2 new = 1447 total
+2025-06-13 19:35:58,092 - INFO - Saved GMT data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:35:58,092 - INFO - SUCCESS: Updated GMT
+2025-06-13 19:35:59,092 - INFO - Processing GRT (40/93)
+2025-06-13 19:35:59,092 - WARNING - Skipping GRT - not available on Hyperliquid
+2025-06-13 19:36:00,093 - INFO - Processing HBAR (41/93)
+2025-06-13 19:36:00,097 - INFO - Updating HBAR from 2025-06-13 19:29:59
+2025-06-13 19:36:00,097 - INFO - Fetching HBAR (HBAR) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:00,559 - INFO - Successfully fetched 2 candles for HBAR
+2025-06-13 19:36:00,561 - INFO - Successfully processed 2 candles for HBAR
+2025-06-13 19:36:00,566 - INFO - Merged data for HBAR: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:00,574 - INFO - Saved HBAR data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:00,574 - INFO - SUCCESS: Updated HBAR
+2025-06-13 19:36:01,575 - INFO - Processing ICP (42/93)
+2025-06-13 19:36:01,575 - WARNING - Skipping ICP - not available on Hyperliquid
+2025-06-13 19:36:02,575 - INFO - Processing ICX (43/93)
+2025-06-13 19:36:02,575 - WARNING - Skipping ICX - not available on Hyperliquid
+2025-06-13 19:36:03,575 - INFO - Processing IMX (44/93)
+2025-06-13 19:36:03,578 - INFO - Updating IMX from 2025-06-13 19:29:59
+2025-06-13 19:36:03,579 - INFO - Fetching IMX (IMX) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:03,801 - INFO - Successfully fetched 2 candles for IMX
+2025-06-13 19:36:03,803 - INFO - Successfully processed 2 candles for IMX
+2025-06-13 19:36:03,808 - INFO - Merged data for IMX: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:03,816 - INFO - Saved IMX data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:03,816 - INFO - SUCCESS: Updated IMX
+2025-06-13 19:36:04,816 - INFO - Processing INJ (45/93)
+2025-06-13 19:36:04,821 - INFO - Updating INJ from 2025-06-13 19:29:59
+2025-06-13 19:36:04,821 - INFO - Fetching INJ (INJ) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:05,033 - INFO - Successfully fetched 2 candles for INJ
+2025-06-13 19:36:05,034 - INFO - Successfully processed 2 candles for INJ
+2025-06-13 19:36:05,039 - INFO - Merged data for INJ: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:05,047 - INFO - Saved INJ data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:05,047 - INFO - SUCCESS: Updated INJ
+2025-06-13 19:36:06,048 - INFO - Processing IOTA (46/93)
+2025-06-13 19:36:06,052 - INFO - Updating IOTA from 2025-06-13 19:29:59
+2025-06-13 19:36:06,052 - INFO - Fetching IOTA (IOTA) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:06,342 - INFO - Successfully fetched 2 candles for IOTA
+2025-06-13 19:36:06,343 - INFO - Successfully processed 2 candles for IOTA
+2025-06-13 19:36:06,348 - INFO - Merged data for IOTA: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:06,356 - INFO - Saved IOTA data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:06,357 - INFO - SUCCESS: Updated IOTA
+2025-06-13 19:36:07,357 - INFO - Processing IOTX (47/93)
+2025-06-13 19:36:07,357 - WARNING - Skipping IOTX - not available on Hyperliquid
+2025-06-13 19:36:08,357 - INFO - Processing JASMY (48/93)
+2025-06-13 19:36:08,357 - WARNING - Skipping JASMY - not available on Hyperliquid
+2025-06-13 19:36:09,358 - INFO - Processing KAVA (49/93)
+2025-06-13 19:36:09,358 - WARNING - Skipping KAVA - not available on Hyperliquid
+2025-06-13 19:36:10,358 - INFO - Processing LDO (50/93)
+2025-06-13 19:36:10,361 - INFO - Updating LDO from 2025-06-13 19:29:59
+2025-06-13 19:36:10,361 - INFO - Fetching LDO (LDO) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:10,578 - INFO - Successfully fetched 2 candles for LDO
+2025-06-13 19:36:10,579 - INFO - Successfully processed 2 candles for LDO
+2025-06-13 19:36:10,584 - INFO - Merged data for LDO: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:10,592 - INFO - Saved LDO data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:10,592 - INFO - SUCCESS: Updated LDO
+2025-06-13 19:36:11,593 - INFO - Processing LINK (51/93)
+2025-06-13 19:36:11,596 - INFO - Updating LINK from 2025-06-13 19:29:59
+2025-06-13 19:36:11,596 - INFO - Fetching LINK (LINK) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:11,855 - INFO - Successfully fetched 2 candles for LINK
+2025-06-13 19:36:11,856 - INFO - Successfully processed 2 candles for LINK
+2025-06-13 19:36:11,861 - INFO - Merged data for LINK: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:11,869 - INFO - Saved LINK data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:11,869 - INFO - SUCCESS: Updated LINK
+2025-06-13 19:36:11,923 - ERROR - Connection to remote host was lost. - goodbye
+2025-06-13 19:36:12,869 - INFO - Processing LRC (52/93)
+2025-06-13 19:36:12,869 - WARNING - Skipping LRC - not available on Hyperliquid
+2025-06-13 19:36:13,870 - INFO - Processing LTC (53/93)
+2025-06-13 19:36:13,873 - INFO - Updating LTC from 2025-06-13 19:29:59
+2025-06-13 19:36:13,873 - INFO - Fetching LTC (LTC) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:14,388 - INFO - Successfully fetched 2 candles for LTC
+2025-06-13 19:36:14,390 - INFO - Successfully processed 2 candles for LTC
+2025-06-13 19:36:14,394 - INFO - Merged data for LTC: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:14,402 - INFO - Saved LTC data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:14,403 - INFO - SUCCESS: Updated LTC
+2025-06-13 19:36:15,403 - INFO - Processing MASK (54/93)
+2025-06-13 19:36:15,403 - WARNING - Skipping MASK - not available on Hyperliquid
+2025-06-13 19:36:16,403 - INFO - Processing MINA (55/93)
+2025-06-13 19:36:16,407 - INFO - Updating MINA from 2025-06-13 19:29:59
+2025-06-13 19:36:16,407 - INFO - Fetching MINA (MINA) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:16,653 - INFO - Successfully fetched 2 candles for MINA
+2025-06-13 19:36:16,654 - INFO - Successfully processed 2 candles for MINA
+2025-06-13 19:36:16,659 - INFO - Merged data for MINA: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:16,667 - INFO - Saved MINA data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:16,667 - INFO - SUCCESS: Updated MINA
+2025-06-13 19:36:17,668 - INFO - Processing MKR (56/93)
+2025-06-13 19:36:17,671 - INFO - Updating MKR from 2025-06-13 19:29:59
+2025-06-13 19:36:17,671 - INFO - Fetching MKR (MKR) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:17,916 - INFO - Successfully fetched 2 candles for MKR
+2025-06-13 19:36:17,918 - INFO - Successfully processed 2 candles for MKR
+2025-06-13 19:36:17,922 - INFO - Merged data for MKR: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:17,930 - INFO - Saved MKR data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:17,931 - INFO - SUCCESS: Updated MKR
+2025-06-13 19:36:18,931 - INFO - Processing NEAR (57/93)
+2025-06-13 19:36:18,934 - INFO - Updating NEAR from 2025-06-13 19:29:59
+2025-06-13 19:36:18,934 - INFO - Fetching NEAR (NEAR) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:19,140 - INFO - Successfully fetched 2 candles for NEAR
+2025-06-13 19:36:19,141 - INFO - Successfully processed 2 candles for NEAR
+2025-06-13 19:36:19,146 - INFO - Merged data for NEAR: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:19,154 - INFO - Saved NEAR data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:19,154 - INFO - SUCCESS: Updated NEAR
+2025-06-13 19:36:20,155 - INFO - Processing NEO (58/93)
+2025-06-13 19:36:20,158 - INFO - Updating NEO from 2025-06-13 19:29:59
+2025-06-13 19:36:20,158 - INFO - Fetching NEO (NEO) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:20,403 - INFO - Successfully fetched 2 candles for NEO
+2025-06-13 19:36:20,404 - INFO - Successfully processed 2 candles for NEO
+2025-06-13 19:36:20,409 - INFO - Merged data for NEO: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:20,417 - INFO - Saved NEO data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:20,417 - INFO - SUCCESS: Updated NEO
+2025-06-13 19:36:21,417 - INFO - Processing OM (59/93)
+2025-06-13 19:36:21,421 - INFO - Updating OM from 2025-06-13 19:29:59
+2025-06-13 19:36:21,421 - INFO - Fetching OM (OM) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:21,633 - INFO - Successfully fetched 2 candles for OM
+2025-06-13 19:36:21,635 - INFO - Successfully processed 2 candles for OM
+2025-06-13 19:36:21,640 - INFO - Merged data for OM: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:21,648 - INFO - Saved OM data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:21,648 - INFO - SUCCESS: Updated OM
+2025-06-13 19:36:22,648 - INFO - Processing OP (60/93)
+2025-06-13 19:36:22,651 - INFO - Updating OP from 2025-06-13 19:29:59
+2025-06-13 19:36:22,652 - INFO - Fetching OP (OP) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:22,877 - INFO - Successfully fetched 2 candles for OP
+2025-06-13 19:36:22,878 - INFO - Successfully processed 2 candles for OP
+2025-06-13 19:36:22,883 - INFO - Merged data for OP: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:22,891 - INFO - Saved OP data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:22,891 - INFO - SUCCESS: Updated OP
+2025-06-13 19:36:23,892 - INFO - Processing ORDI (61/93)
+2025-06-13 19:36:23,895 - INFO - Updating ORDI from 2025-06-13 19:29:59
+2025-06-13 19:36:23,895 - INFO - Fetching ORDI (ORDI) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:24,129 - INFO - Successfully fetched 2 candles for ORDI
+2025-06-13 19:36:24,131 - INFO - Successfully processed 2 candles for ORDI
+2025-06-13 19:36:24,136 - INFO - Merged data for ORDI: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:24,144 - INFO - Saved ORDI data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:24,144 - INFO - SUCCESS: Updated ORDI
+2025-06-13 19:36:25,144 - INFO - Processing PAXG (62/93)
+2025-06-13 19:36:25,147 - INFO - Updating PAXG from 2025-06-13 19:29:59
+2025-06-13 19:36:25,148 - INFO - Fetching PAXG (PAXG) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:25,357 - INFO - Successfully fetched 2 candles for PAXG
+2025-06-13 19:36:25,359 - INFO - Successfully processed 2 candles for PAXG
+2025-06-13 19:36:25,363 - INFO - Merged data for PAXG: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:25,371 - INFO - Saved PAXG data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:25,372 - INFO - SUCCESS: Updated PAXG
+2025-06-13 19:36:26,372 - INFO - Processing PENDLE (63/93)
+2025-06-13 19:36:26,376 - INFO - Updating PENDLE from 2025-06-13 19:29:59
+2025-06-13 19:36:26,376 - INFO - Fetching PENDLE (PENDLE) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:26,586 - INFO - Successfully fetched 2 candles for PENDLE
+2025-06-13 19:36:26,587 - INFO - Successfully processed 2 candles for PENDLE
+2025-06-13 19:36:26,593 - INFO - Merged data for PENDLE: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:26,613 - INFO - Saved PENDLE data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:26,613 - INFO - SUCCESS: Updated PENDLE
+2025-06-13 19:36:27,613 - INFO - Processing PEOPLE (64/93)
+2025-06-13 19:36:27,617 - INFO - Updating PEOPLE from 2025-06-13 19:29:59
+2025-06-13 19:36:27,618 - INFO - Fetching PEOPLE (PEOPLE) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:27,853 - INFO - Successfully fetched 2 candles for PEOPLE
+2025-06-13 19:36:27,854 - INFO - Successfully processed 2 candles for PEOPLE
+2025-06-13 19:36:27,860 - INFO - Merged data for PEOPLE: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:27,868 - INFO - Saved PEOPLE data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:27,868 - INFO - SUCCESS: Updated PEOPLE
+2025-06-13 19:36:28,868 - INFO - Processing PEPE (65/93)
+2025-06-13 19:36:28,873 - INFO - Updating PEPE from 2025-06-13 19:29:59
+2025-06-13 19:36:28,873 - INFO - Fetching PEPE (kPEPE) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:29,272 - INFO - Successfully fetched 2 candles for PEPE
+2025-06-13 19:36:29,273 - INFO - Successfully processed 2 candles for PEPE
+2025-06-13 19:36:29,279 - INFO - Merged data for PEPE: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:29,287 - INFO - Saved PEPE data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:29,287 - INFO - SUCCESS: Updated PEPE
+2025-06-13 19:36:30,287 - INFO - Processing PYTH (66/93)
+2025-06-13 19:36:30,292 - INFO - Updating PYTH from 2025-06-13 19:29:59
+2025-06-13 19:36:30,292 - INFO - Fetching PYTH (PYTH) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:30,498 - INFO - Successfully fetched 2 candles for PYTH
+2025-06-13 19:36:30,499 - INFO - Successfully processed 2 candles for PYTH
+2025-06-13 19:36:30,505 - INFO - Merged data for PYTH: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:30,513 - INFO - Saved PYTH data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:30,513 - INFO - SUCCESS: Updated PYTH
+2025-06-13 19:36:31,513 - INFO - Processing QNT (67/93)
+2025-06-13 19:36:31,513 - WARNING - Skipping QNT - not available on Hyperliquid
+2025-06-13 19:36:32,514 - INFO - Processing RAD (68/93)
+2025-06-13 19:36:32,514 - WARNING - Skipping RAD - not available on Hyperliquid
+2025-06-13 19:36:33,514 - INFO - Processing RARE (69/93)
+2025-06-13 19:36:33,514 - WARNING - Skipping RARE - not available on Hyperliquid
+2025-06-13 19:36:34,514 - INFO - Processing RAY (70/93)
+2025-06-13 19:36:34,515 - WARNING - Skipping RAY - not available on Hyperliquid
+2025-06-13 19:36:35,515 - INFO - Processing ROSE (71/93)
+2025-06-13 19:36:35,515 - WARNING - Skipping ROSE - not available on Hyperliquid
+2025-06-13 19:36:36,515 - INFO - Processing RSR (72/93)
+2025-06-13 19:36:36,519 - INFO - Updating RSR from 2025-06-13 19:29:59
+2025-06-13 19:36:36,519 - INFO - Fetching RSR (RSR) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:36,737 - INFO - Successfully fetched 2 candles for RSR
+2025-06-13 19:36:36,738 - INFO - Successfully processed 2 candles for RSR
+2025-06-13 19:36:36,744 - INFO - Merged data for RSR: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:36,752 - INFO - Saved RSR data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:36,752 - INFO - SUCCESS: Updated RSR
+2025-06-13 19:36:37,752 - INFO - Processing RUNE (73/93)
+2025-06-13 19:36:37,756 - INFO - Updating RUNE from 2025-06-13 19:29:59
+2025-06-13 19:36:37,756 - INFO - Fetching RUNE (RUNE) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:37,963 - INFO - Successfully fetched 2 candles for RUNE
+2025-06-13 19:36:37,964 - INFO - Successfully processed 2 candles for RUNE
+2025-06-13 19:36:37,969 - INFO - Merged data for RUNE: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:37,977 - INFO - Saved RUNE data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:37,977 - INFO - SUCCESS: Updated RUNE
+2025-06-13 19:36:38,978 - INFO - Processing SAND (74/93)
+2025-06-13 19:36:38,982 - INFO - Updating SAND from 2025-06-13 19:29:59
+2025-06-13 19:36:38,982 - INFO - Fetching SAND (SAND) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:39,323 - INFO - Successfully fetched 1 candles for SAND
+2025-06-13 19:36:39,325 - INFO - Successfully processed 1 candles for SAND
+2025-06-13 19:36:39,330 - INFO - Merged data for SAND: 1446 existing + 1 new = 1446 total
+2025-06-13 19:36:39,338 - INFO - Saved SAND data: 1446 candles from 2025-05-14 17:29:59 to 2025-06-13 19:29:59
+2025-06-13 19:36:39,339 - INFO - SUCCESS: Updated SAND
+2025-06-13 19:36:40,339 - INFO - Processing SEI (75/93)
+2025-06-13 19:36:40,343 - INFO - Updating SEI from 2025-06-13 19:29:59
+2025-06-13 19:36:40,343 - INFO - Fetching SEI (SEI) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:40,557 - INFO - Successfully fetched 2 candles for SEI
+2025-06-13 19:36:40,558 - INFO - Successfully processed 2 candles for SEI
+2025-06-13 19:36:40,564 - INFO - Merged data for SEI: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:40,572 - INFO - Saved SEI data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:40,572 - INFO - SUCCESS: Updated SEI
+2025-06-13 19:36:41,572 - INFO - Processing SHIB (76/93)
+2025-06-13 19:36:41,576 - INFO - Updating SHIB from 2025-06-13 19:29:59
+2025-06-13 19:36:41,576 - INFO - Fetching SHIB (kSHIB) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:41,798 - INFO - Successfully fetched 2 candles for SHIB
+2025-06-13 19:36:41,800 - INFO - Successfully processed 2 candles for SHIB
+2025-06-13 19:36:41,805 - INFO - Merged data for SHIB: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:41,814 - INFO - Saved SHIB data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:41,814 - INFO - SUCCESS: Updated SHIB
+2025-06-13 19:36:42,814 - INFO - Processing SOL (77/93)
+2025-06-13 19:36:42,817 - INFO - Updating SOL from 2025-06-13 19:29:59
+2025-06-13 19:36:42,817 - INFO - Fetching SOL (SOL) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:43,025 - INFO - Successfully fetched 2 candles for SOL
+2025-06-13 19:36:43,026 - INFO - Successfully processed 2 candles for SOL
+2025-06-13 19:36:43,031 - INFO - Merged data for SOL: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:43,039 - INFO - Saved SOL data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:43,039 - INFO - SUCCESS: Updated SOL
+2025-06-13 19:36:44,039 - INFO - Processing SUI (78/93)
+2025-06-13 19:36:44,043 - INFO - Updating SUI from 2025-06-13 19:29:59
+2025-06-13 19:36:44,043 - INFO - Fetching SUI (SUI) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:44,249 - INFO - Successfully fetched 2 candles for SUI
+2025-06-13 19:36:44,250 - INFO - Successfully processed 2 candles for SUI
+2025-06-13 19:36:44,255 - INFO - Merged data for SUI: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:44,263 - INFO - Saved SUI data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:44,263 - INFO - SUCCESS: Updated SUI
+2025-06-13 19:36:45,264 - INFO - Processing TAO (79/93)
+2025-06-13 19:36:45,267 - INFO - Updating TAO from 2025-06-13 19:29:59
+2025-06-13 19:36:45,267 - INFO - Fetching TAO (TAO) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:45,474 - INFO - Successfully fetched 2 candles for TAO
+2025-06-13 19:36:45,475 - INFO - Successfully processed 2 candles for TAO
+2025-06-13 19:36:45,480 - INFO - Merged data for TAO: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:45,488 - INFO - Saved TAO data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:45,488 - INFO - SUCCESS: Updated TAO
+2025-06-13 19:36:46,488 - INFO - Processing TIA (80/93)
+2025-06-13 19:36:46,492 - INFO - Updating TIA from 2025-06-13 19:29:59
+2025-06-13 19:36:46,492 - INFO - Fetching TIA (TIA) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:46,702 - INFO - Successfully fetched 2 candles for TIA
+2025-06-13 19:36:46,703 - INFO - Successfully processed 2 candles for TIA
+2025-06-13 19:36:46,708 - INFO - Merged data for TIA: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:46,716 - INFO - Saved TIA data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:46,716 - INFO - SUCCESS: Updated TIA
+2025-06-13 19:36:47,716 - INFO - Processing TON (81/93)
+2025-06-13 19:36:47,720 - INFO - Updating TON from 2025-06-13 19:29:59
+2025-06-13 19:36:47,720 - INFO - Fetching TON (TON) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:47,928 - INFO - Successfully fetched 2 candles for TON
+2025-06-13 19:36:47,929 - INFO - Successfully processed 2 candles for TON
+2025-06-13 19:36:47,934 - INFO - Merged data for TON: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:47,942 - INFO - Saved TON data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:47,943 - INFO - SUCCESS: Updated TON
+2025-06-13 19:36:48,943 - INFO - Processing TRB (82/93)
+2025-06-13 19:36:48,946 - INFO - Updating TRB from 2025-06-13 19:29:59
+2025-06-13 19:36:48,946 - INFO - Fetching TRB (TRB) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:49,263 - INFO - Successfully fetched 2 candles for TRB
+2025-06-13 19:36:49,264 - INFO - Successfully processed 2 candles for TRB
+2025-06-13 19:36:49,269 - INFO - Merged data for TRB: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:49,277 - INFO - Saved TRB data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:49,277 - INFO - SUCCESS: Updated TRB
+2025-06-13 19:36:50,278 - INFO - Processing TRX (83/93)
+2025-06-13 19:36:50,282 - INFO - Updating TRX from 2025-06-13 19:29:59
+2025-06-13 19:36:50,282 - INFO - Fetching TRX (TRX) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:50,487 - INFO - Successfully fetched 2 candles for TRX
+2025-06-13 19:36:50,488 - INFO - Successfully processed 2 candles for TRX
+2025-06-13 19:36:50,494 - INFO - Merged data for TRX: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:50,502 - INFO - Saved TRX data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:50,502 - INFO - SUCCESS: Updated TRX
+2025-06-13 19:36:51,502 - INFO - Processing UNI (84/93)
+2025-06-13 19:36:51,505 - INFO - Updating UNI from 2025-06-13 19:29:59
+2025-06-13 19:36:51,505 - INFO - Fetching UNI (UNI) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:51,713 - INFO - Successfully fetched 2 candles for UNI
+2025-06-13 19:36:51,715 - INFO - Successfully processed 2 candles for UNI
+2025-06-13 19:36:51,719 - INFO - Merged data for UNI: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:51,727 - INFO - Saved UNI data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:51,728 - INFO - SUCCESS: Updated UNI
+2025-06-13 19:36:52,728 - INFO - Processing VET (85/93)
+2025-06-13 19:36:52,728 - WARNING - Skipping VET - not available on Hyperliquid
+2025-06-13 19:36:53,728 - INFO - Processing WIF (86/93)
+2025-06-13 19:36:53,732 - INFO - Updating WIF from 2025-06-13 19:29:59
+2025-06-13 19:36:53,732 - INFO - Fetching WIF (WIF) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:53,993 - INFO - Successfully fetched 2 candles for WIF
+2025-06-13 19:36:53,995 - INFO - Successfully processed 2 candles for WIF
+2025-06-13 19:36:53,999 - INFO - Merged data for WIF: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:54,008 - INFO - Saved WIF data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:54,008 - INFO - SUCCESS: Updated WIF
+2025-06-13 19:36:55,008 - INFO - Processing WLD (87/93)
+2025-06-13 19:36:55,011 - INFO - Updating WLD from 2025-06-13 19:29:59
+2025-06-13 19:36:55,011 - INFO - Fetching WLD (WLD) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:55,221 - INFO - Successfully fetched 2 candles for WLD
+2025-06-13 19:36:55,223 - INFO - Successfully processed 2 candles for WLD
+2025-06-13 19:36:55,227 - INFO - Merged data for WLD: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:55,236 - INFO - Saved WLD data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:55,236 - INFO - SUCCESS: Updated WLD
+2025-06-13 19:36:56,236 - INFO - Processing XLM (88/93)
+2025-06-13 19:36:56,239 - INFO - Updating XLM from 2025-06-13 19:29:59
+2025-06-13 19:36:56,240 - INFO - Fetching XLM (XLM) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:56,446 - INFO - Successfully fetched 2 candles for XLM
+2025-06-13 19:36:56,447 - INFO - Successfully processed 2 candles for XLM
+2025-06-13 19:36:56,452 - INFO - Merged data for XLM: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:56,461 - INFO - Saved XLM data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:56,461 - INFO - SUCCESS: Updated XLM
+2025-06-13 19:36:57,461 - INFO - Processing XRP (89/93)
+2025-06-13 19:36:57,464 - INFO - Updating XRP from 2025-06-13 19:29:59
+2025-06-13 19:36:57,464 - INFO - Fetching XRP (XRP) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:57,670 - INFO - Successfully fetched 2 candles for XRP
+2025-06-13 19:36:57,671 - INFO - Successfully processed 2 candles for XRP
+2025-06-13 19:36:57,676 - INFO - Merged data for XRP: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:57,684 - INFO - Saved XRP data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:57,684 - INFO - SUCCESS: Updated XRP
+2025-06-13 19:36:58,685 - INFO - Processing XVG (90/93)
+2025-06-13 19:36:58,685 - WARNING - Skipping XVG - not available on Hyperliquid
+2025-06-13 19:36:59,685 - INFO - Processing YGG (91/93)
+2025-06-13 19:36:59,688 - INFO - Updating YGG from 2025-06-13 19:29:59
+2025-06-13 19:36:59,688 - INFO - Fetching YGG (YGG) candles from 2025-06-13 19:29:59
+2025-06-13 19:36:59,899 - INFO - Successfully fetched 2 candles for YGG
+2025-06-13 19:36:59,901 - INFO - Successfully processed 2 candles for YGG
+2025-06-13 19:36:59,906 - INFO - Merged data for YGG: 1446 existing + 2 new = 1447 total
+2025-06-13 19:36:59,914 - INFO - Saved YGG data: 1447 candles from 2025-05-14 17:29:59 to 2025-06-13 19:59:59
+2025-06-13 19:36:59,914 - INFO - SUCCESS: Updated YGG
+2025-06-13 19:37:00,914 - INFO - Processing ZEC (92/93)
+2025-06-13 19:37:00,915 - WARNING - Skipping ZEC - not available on Hyperliquid
+2025-06-13 19:37:01,915 - INFO - Processing ZRX (93/93)
+2025-06-13 19:37:01,915 - WARNING - Skipping ZRX - not available on Hyperliquid
+2025-06-13 19:37:02,915 - INFO - Update cycle completed in 0:01:51.088522
+2025-06-13 19:37:02,915 - INFO -    SUCCESS: 69
+2025-06-13 19:37:02,915 - INFO -    FAILED: 24
+2025-06-13 19:37:02,915 - INFO -    Success rate: 74.2%
+2025-06-13 19:37:02,916 - INFO - GitHub Actions run completed successfully
