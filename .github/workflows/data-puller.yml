@@ -36,7 +36,7 @@ jobs:
       run: mkdir -p downloads
       
     - name: Download previous data (if exists)
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: ohlc-data
         path: downloads
@@ -50,7 +50,7 @@ jobs:
         python hyperliquid_puller.py --auto
         
     - name: Upload data as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ohlc-data
         path: downloads/
