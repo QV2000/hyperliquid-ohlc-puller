@@ -1,5 +1,8 @@
 name: Hyperliquid OHLC Data Puller
 
+permissions:
+  contents: write  # Allow workflow to commit files
+
 on:
   schedule:
     # Runs every 30 minutes as requested
@@ -32,31 +35,36 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
-    - name: Create downloads directory
-      run: mkdir -p downloads
-      
-    - name: Download previous data (if exists)
-      uses: actions/download-artifact@v4
-      with:
-        name: ohlc-data
-        path: downloads
-      continue-on-error: true
+    - name: Create data directory
+      run: mkdir -p data
       
     - name: Run data puller
       env:
         GITHUB_ACTIONS: 'true'
-        DATA_FOLDER: './downloads'
+        DATA_FOLDER: './data'
       run: |
         python hyperliquid_puller.py
         
-    - name: Upload data as artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: ohlc-data
-        path: downloads/
-        retention-days: 90
-        
-    - name: Log completion
+    - name: Check generated data
       run: |
-        echo "Data pull completed at $(date)"
-        ls -la downloads/
+        echo "Generated data files:"
+        ls -la data/
+        echo "Total CSV files: $(find data -name "*.csv" | wc -l)"
+        
+    - name: Commit and push data
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Add data files
+        git add data/
+        
+        # Check if there are any changes
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          # Commit with timestamp
+          git commit -m "Update Hyperliquid data - $(date)"
+          git push
+          echo "✅ Data committed and pushed to repository"
+        fi
