@@ -1,0 +1,4 @@
+pandas==2.1.4
+schedule==1.2.0
+hyperliquid-python-sdk==0.1.8
+requests==2.31.0
