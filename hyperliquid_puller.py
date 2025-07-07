@@ -21,6 +21,7 @@ if not os.path.exists(DOWNLOADS_FOLDER):
     
 BASE_URL = "https://api.hyperliquid.xyz"
 INTERVAL = "30m"  # 30-minute intervals
+HISTORICAL_DAYS = 365  # Changed from 30 to 365 days
 
 # Full list of assets to track (from your script output)
 ASSETS = [
@@ -73,6 +74,7 @@ class HyperliquidOHLCPuller:
         logging.info(f"Initialized Hyperliquid OHLC Puller")
         logging.info(f"Downloads folder: {self.downloads_folder}")
         logging.info(f"Tracking {len(ASSETS)} assets")
+        logging.info(f"Historical data period: {HISTORICAL_DAYS} days")
         
         # Get available symbols from exchange
         self.get_available_symbols()
@@ -151,7 +153,28 @@ class HyperliquidOHLCPuller:
             return existing_df['timestamp'].max()
         return None
     
-    def fetch_candle_data(self, asset, start_time=None):
+    def should_rebuild_data(self, asset):
+        """Check if existing data should be rebuilt (if it only has ~30 days)"""
+        existing_data = self.load_existing_data(asset)
+        
+        if existing_data is None or len(existing_data) == 0:
+            return True  # No data, need to build
+        
+        # Calculate the date range of existing data
+        min_date = existing_data['timestamp'].min()
+        max_date = existing_data['timestamp'].max()
+        date_range = (max_date - min_date).days
+        
+        # If data spans less than 300 days, rebuild to get full 365 days
+        # (300 days accounts for weekends, holidays, etc.)
+        if date_range < 300:
+            logging.info(f"{asset}: Existing data spans only {date_range} days, rebuilding for {HISTORICAL_DAYS} days")
+            return True
+        
+        logging.info(f"{asset}: Existing data spans {date_range} days, keeping and updating")
+        return False
+    
+    def fetch_candle_data(self, asset, start_time=None, force_full_history=False):
         """Fetch candle data from Hyperliquid using direct HTTP method"""
         try:
             hl_symbol = get_hyperliquid_symbol(asset)
@@ -162,14 +185,15 @@ class HyperliquidOHLCPuller:
                 return None
             
             # Calculate start time in milliseconds
-            if start_time is None:
-                # If no start time, get last 30 days of data
-                start_time = datetime.now() - timedelta(days=30)
+            if start_time is None or force_full_history:
+                # Get full historical data
+                start_time = datetime.now() - timedelta(days=HISTORICAL_DAYS)
+                logging.info(f"Fetching {asset} ({hl_symbol}) - FULL {HISTORICAL_DAYS} days from {start_time}")
+            else:
+                logging.info(f"Fetching {asset} ({hl_symbol}) - UPDATE from {start_time}")
             
             start_time_ms = int(start_time.timestamp() * 1000)
             end_time_ms = int(datetime.now().timestamp() * 1000)
-            
-            logging.info(f"Fetching {asset} ({hl_symbol}) candles from {start_time}")
             
             # Use direct HTTP request (this is what worked in the test)
             try:
@@ -253,21 +277,27 @@ class HyperliquidOHLCPuller:
             logging.error(traceback.format_exc())
             return None
     
-    def merge_and_save_data(self, asset, new_data):
+    def merge_and_save_data(self, asset, new_data, replace_existing=False):
         """Merge new data with existing data and save"""
         try:
-            existing_data = self.load_existing_data(asset)
-            
-            if existing_data is not None:
-                # Merge data, avoiding duplicates
-                combined_data = pd.concat([existing_data, new_data], ignore_index=True)
-                combined_data = combined_data.drop_duplicates(subset=['timestamp'], keep='last')
-                combined_data = combined_data.sort_values('timestamp').reset_index(drop=True)
-                
-                logging.info(f"Merged data for {asset}: {len(existing_data)} existing + {len(new_data)} new = {len(combined_data)} total")
-            else:
+            if replace_existing:
+                # Replace existing data entirely
                 combined_data = new_data
-                logging.info(f"New data file for {asset}: {len(combined_data)} candles")
+                logging.info(f"Replaced data for {asset}: {len(combined_data)} candles")
+            else:
+                # Merge with existing data
+                existing_data = self.load_existing_data(asset)
+                
+                if existing_data is not None:
+                    # Merge data, avoiding duplicates
+                    combined_data = pd.concat([existing_data, new_data], ignore_index=True)
+                    combined_data = combined_data.drop_duplicates(subset=['timestamp'], keep='last')
+                    combined_data = combined_data.sort_values('timestamp').reset_index(drop=True)
+                    
+                    logging.info(f"Merged data for {asset}: {len(existing_data)} existing + {len(new_data)} new = {len(combined_data)} total")
+                else:
+                    combined_data = new_data
+                    logging.info(f"New data file for {asset}: {len(combined_data)} candles")
             
             # Save to CSV with proper timestamp formatting
             file_path = self.get_file_path(asset)
@@ -288,41 +318,59 @@ class HyperliquidOHLCPuller:
             return False
     
     def update_single_asset(self, asset):
-        """Update data for a single asset"""
+        """Update data for a single asset with smart rebuilding"""
         try:
             # Check if symbol is available first
             if not self.is_symbol_available(asset):
                 logging.warning(f"Skipping {asset} - not available on Hyperliquid")
                 return False
             
-            # Load existing data to determine start time
-            existing_data = self.load_existing_data(asset)
-            latest_timestamp = self.get_latest_timestamp(existing_data)
+            # Check if we should rebuild the data (for short datasets)
+            should_rebuild = self.should_rebuild_data(asset)
             
-            # If we have existing data, start from the last timestamp
-            if latest_timestamp:
-                # Start from the last timestamp to ensure we don't miss any data
-                start_time = latest_timestamp
-                logging.info(f"Updating {asset} from {start_time}")
-            else:
-                # No existing data, get last 30 days
-                start_time = datetime.now() - timedelta(days=30)
-                logging.info(f"Creating new data file for {asset} from {start_time}")
-            
-            # Fetch new data
-            new_data = self.fetch_candle_data(asset, start_time)
-            
-            if new_data is not None and len(new_data) > 0:
-                # Save the data
-                if self.merge_and_save_data(asset, new_data):
-                    logging.info(f"SUCCESS: Updated {asset}")
-                    return True
+            if should_rebuild:
+                # Rebuild with full historical data
+                new_data = self.fetch_candle_data(asset, force_full_history=True)
+                
+                if new_data is not None and len(new_data) > 0:
+                    # Replace existing data entirely
+                    if self.merge_and_save_data(asset, new_data, replace_existing=True):
+                        logging.info(f"SUCCESS: Rebuilt {asset} with {HISTORICAL_DAYS} days of data")
+                        return True
+                    else:
+                        logging.error(f"FAILED: Could not save rebuilt data for {asset}")
+                        return False
                 else:
-                    logging.error(f"FAILED: Could not save data for {asset}")
+                    logging.warning(f"WARNING: No historical data available for {asset}")
                     return False
             else:
-                logging.warning(f"WARNING: No new data for {asset}")
-                return False
+                # Normal update - just get recent data
+                existing_data = self.load_existing_data(asset)
+                latest_timestamp = self.get_latest_timestamp(existing_data)
+                
+                if latest_timestamp:
+                    # Start from the last timestamp to ensure we don't miss any data
+                    start_time = latest_timestamp
+                    logging.info(f"Updating {asset} from {start_time}")
+                else:
+                    # No existing data, get full history
+                    start_time = datetime.now() - timedelta(days=HISTORICAL_DAYS)
+                    logging.info(f"Creating new data file for {asset} from {start_time}")
+                
+                # Fetch new data
+                new_data = self.fetch_candle_data(asset, start_time)
+                
+                if new_data is not None and len(new_data) > 0:
+                    # Save the data
+                    if self.merge_and_save_data(asset, new_data):
+                        logging.info(f"SUCCESS: Updated {asset}")
+                        return True
+                    else:
+                        logging.error(f"FAILED: Could not save data for {asset}")
+                        return False
+                else:
+                    logging.warning(f"WARNING: No new data for {asset}")
+                    return False
                 
         except Exception as e:
             logging.error(f"ERROR: Updating {asset}: {str(e)}")
@@ -335,10 +383,16 @@ class HyperliquidOHLCPuller:
         
         success_count = 0
         fail_count = 0
+        rebuild_count = 0
         
         for i, asset in enumerate(ASSETS, 1):
             try:
                 logging.info(f"Processing {asset} ({i}/{len(ASSETS)})")
+                
+                # Check if this asset needs rebuilding
+                needs_rebuild = self.should_rebuild_data(asset)
+                if needs_rebuild:
+                    rebuild_count += 1
                 
                 if self.update_single_asset(asset):
                     success_count += 1
@@ -359,6 +413,7 @@ class HyperliquidOHLCPuller:
         logging.info(f"Update cycle completed in {duration}")
         logging.info(f"   SUCCESS: {success_count}")
         logging.info(f"   FAILED: {fail_count}")
+        logging.info(f"   REBUILT: {rebuild_count}")
         if success_count + fail_count > 0:
             logging.info(f"   Success rate: {(success_count/(success_count+fail_count)*100):.1f}%")
         
@@ -387,6 +442,9 @@ class HyperliquidOHLCPuller:
                             df['timestamp'] = pd.to_datetime(df['timestamp'], format='%Y-%m-%d %H:%M:%S')
                             df = df.sort_values('timestamp')
                             
+                            # Calculate date range
+                            date_range = (df['timestamp'].max() - df['timestamp'].min()).days
+                            
                             # Check for 30-minute intervals
                             time_diffs = df['timestamp'].diff()
                             expected_diff = timedelta(minutes=30)
@@ -396,7 +454,7 @@ class HyperliquidOHLCPuller:
                             if len(gaps) > 0:
                                 logging.warning(f"WARNING {asset}: Found {len(gaps)} data gaps")
                             
-                            logging.info(f"VERIFIED {asset}: {len(df)} candles, {df['timestamp'].min()} to {df['timestamp'].max()}")
+                            logging.info(f"VERIFIED {asset}: {len(df)} candles, {date_range} days, {df['timestamp'].min()} to {df['timestamp'].max()}")
                     else:
                         logging.warning(f"WARNING {asset}: Empty data file")
                         
@@ -438,6 +496,7 @@ def main():
     """Main function to run the scheduler"""
     logging.info("Starting Hyperliquid OHLC Data Puller")
     logging.info(f"Tracking {len(ASSETS)} assets")
+    logging.info(f"Historical period: {HISTORICAL_DAYS} days")
     logging.info(f"Saving to: {DOWNLOADS_FOLDER}")
 
     # Check if running in GitHub Actions
@@ -503,14 +562,15 @@ def main():
     else:
         # Interactive mode
         print("\nChoose an option:")
-        print("1. Run initial setup (get 30 days of historical data)")
+        print("1. Run initial setup (get 365 days of historical data)")
         print("2. Run single update cycle")
         print("3. Run continuous scheduler (every 30 minutes)")
         print("4. Verify existing data integrity")
         print("5. Run automated mode (initial setup + continuous)")
+        print("6. Force rebuild all data (365 days)")
 
         try:
-            choice = input("Enter choice (1-5): ").strip()
+            choice = input("Enter choice (1-6): ").strip()
 
             if choice == "1":
                 logging.info("Running initial setup...")
@@ -541,6 +601,14 @@ def main():
                 logging.info("Starting automated mode...")
                 # Restart in automated mode
                 os.execv(sys.executable, [sys.executable] + sys.argv + ['--auto'])
+            elif choice == "6":
+                logging.info("Force rebuilding all data with 365 days...")
+                puller = HyperliquidOHLCPuller()
+                # Force rebuild all by temporarily making should_rebuild_data return True
+                original_method = puller.should_rebuild_data
+                puller.should_rebuild_data = lambda asset: True
+                puller.update_all_assets()
+                puller.should_rebuild_data = original_method
             else:
                 logging.error("Invalid choice")
 
