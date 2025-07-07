@@ -154,10 +154,11 @@ class HyperliquidOHLCPuller:
         return None
     
     def should_rebuild_data(self, asset):
-        """Check if existing data should be rebuilt (if it only has ~30 days)"""
+        """Check if existing data should be rebuilt (if it only has limited historical data)"""
         existing_data = self.load_existing_data(asset)
         
         if existing_data is None or len(existing_data) == 0:
+            logging.info(f"{asset}: No existing data, will fetch {HISTORICAL_DAYS} days")
             return True  # No data, need to build
         
         # Calculate the date range of existing data
@@ -165,17 +166,56 @@ class HyperliquidOHLCPuller:
         max_date = existing_data['timestamp'].max()
         date_range = (max_date - min_date).days
         
-        # If data spans less than 300 days, rebuild to get full 365 days
-        # (300 days accounts for weekends, holidays, etc.)
-        if date_range < 300:
+        # Calculate how far back the data goes from today
+        days_from_today = (datetime.now() - min_date).days
+        
+        # If data spans less than 250 days OR doesn't go back far enough, rebuild
+        # (250 days accounts for weekends, holidays, market closures, etc.)
+        if date_range < 250:
             logging.info(f"{asset}: Existing data spans only {date_range} days, rebuilding for {HISTORICAL_DAYS} days")
             return True
+        elif days_from_today < 300:
+            logging.info(f"{asset}: Data only goes back {days_from_today} days from today, rebuilding for {HISTORICAL_DAYS} days")
+            return True
         
-        logging.info(f"{asset}: Existing data spans {date_range} days, keeping and updating")
+        logging.info(f"{asset}: Existing data spans {date_range} days (goes back {days_from_today} days), keeping and updating")
         return False
     
+    def fetch_candle_data_chunk(self, asset, start_time_ms, end_time_ms):
+        """Fetch a single chunk of candle data"""
+        hl_symbol = get_hyperliquid_symbol(asset)
+        
+        try:
+            api_url = f"{BASE_URL}/info"
+            
+            payload = {
+                "type": "candleSnapshot",
+                "req": {
+                    "coin": hl_symbol,
+                    "interval": INTERVAL,
+                    "startTime": start_time_ms,
+                    "endTime": end_time_ms
+                }
+            }
+            
+            response = requests.post(api_url, json=payload, headers={'Content-Type': 'application/json'})
+            
+            if response.status_code == 200:
+                candles = response.json()
+                if candles and isinstance(candles, list):
+                    return candles
+                else:
+                    return []
+            else:
+                logging.error(f"HTTP error for {asset}: {response.status_code} - {response.text}")
+                return None
+                    
+        except Exception as e:
+            logging.error(f"HTTP request failed for {asset}: {str(e)}")
+            return None
+
     def fetch_candle_data(self, asset, start_time=None, force_full_history=False):
-        """Fetch candle data from Hyperliquid using direct HTTP method"""
+        """Fetch candle data from Hyperliquid using chunked requests to bypass API limits"""
         try:
             hl_symbol = get_hyperliquid_symbol(asset)
             
@@ -184,7 +224,7 @@ class HyperliquidOHLCPuller:
                 logging.warning(f"Symbol {asset} ({hl_symbol}) not available on Hyperliquid")
                 return None
             
-            # Calculate start time in milliseconds
+            # Calculate start time
             if start_time is None or force_full_history:
                 # Get full historical data
                 start_time = datetime.now() - timedelta(days=HISTORICAL_DAYS)
@@ -192,39 +232,58 @@ class HyperliquidOHLCPuller:
             else:
                 logging.info(f"Fetching {asset} ({hl_symbol}) - UPDATE from {start_time}")
             
-            start_time_ms = int(start_time.timestamp() * 1000)
-            end_time_ms = int(datetime.now().timestamp() * 1000)
+            end_time = datetime.now()
             
-            # Use direct HTTP request (this is what worked in the test)
-            try:
-                api_url = f"{BASE_URL}/info"
+            # For full history, use chunked requests to bypass API limits
+            if force_full_history or (start_time and (end_time - start_time).days > 50):
+                logging.info(f"Using chunked requests for {asset} to get full historical data...")
                 
-                payload = {
-                    "type": "candleSnapshot",
-                    "req": {
-                        "coin": hl_symbol,
-                        "interval": INTERVAL,
-                        "startTime": start_time_ms,
-                        "endTime": end_time_ms
-                    }
-                }
+                # Split into 45-day chunks (to stay safely under API limits)
+                chunk_days = 45
+                all_candles = []
+                current_start = start_time
+                chunk_count = 0
                 
-                response = requests.post(api_url, json=payload, headers={'Content-Type': 'application/json'})
-                
-                if response.status_code == 200:
-                    candles = response.json()
-                    if candles and isinstance(candles, list):
-                        logging.info(f"Successfully fetched {len(candles)} candles for {asset}")
+                while current_start < end_time:
+                    chunk_count += 1
+                    current_end = min(current_start + timedelta(days=chunk_days), end_time)
+                    
+                    start_time_ms = int(current_start.timestamp() * 1000)
+                    end_time_ms = int(current_end.timestamp() * 1000)
+                    
+                    logging.info(f"  Chunk {chunk_count}: {current_start.strftime('%Y-%m-%d')} to {current_end.strftime('%Y-%m-%d')}")
+                    
+                    chunk_candles = self.fetch_candle_data_chunk(asset, start_time_ms, end_time_ms)
+                    
+                    if chunk_candles is None:
+                        logging.error(f"Failed to fetch chunk {chunk_count} for {asset}")
+                        break
+                    elif len(chunk_candles) > 0:
+                        all_candles.extend(chunk_candles)
+                        logging.info(f"  Got {len(chunk_candles)} candles from chunk {chunk_count}")
                     else:
-                        logging.warning(f"No candle data returned for {asset}")
-                        return None
-                else:
-                    logging.error(f"HTTP error for {asset}: {response.status_code} - {response.text}")
+                        logging.info(f"  No data in chunk {chunk_count}")
+                    
+                    # Move to next chunk
+                    current_start = current_end
+                    
+                    # Small delay between chunks to be respectful to the API
+                    time.sleep(0.5)
+                
+                candles = all_candles
+                logging.info(f"Total candles fetched for {asset}: {len(candles)} from {chunk_count} chunks")
+                
+            else:
+                # Single request for smaller time ranges
+                start_time_ms = int(start_time.timestamp() * 1000)
+                end_time_ms = int(end_time.timestamp() * 1000)
+                
+                candles = self.fetch_candle_data_chunk(asset, start_time_ms, end_time_ms)
+                
+                if candles is None:
                     return None
-                        
-            except Exception as e:
-                logging.error(f"HTTP request failed for {asset}: {str(e)}")
-                return None
+                
+                logging.info(f"Successfully fetched {len(candles)} candles for {asset}")
             
             if not candles:
                 logging.warning(f"No candle data returned for {asset}")
@@ -267,9 +326,17 @@ class HyperliquidOHLCPuller:
                 return None
             
             df = pd.DataFrame(df_data)
+            # Remove duplicates and sort
+            df = df.drop_duplicates(subset=['timestamp'], keep='last')
             df = df.sort_values('timestamp').reset_index(drop=True)
             
-            logging.info(f"Successfully processed {len(df)} candles for {asset}")
+            # Calculate actual date range
+            if len(df) > 0:
+                date_range = (df['timestamp'].max() - df['timestamp'].min()).days
+                logging.info(f"Successfully processed {len(df)} candles for {asset} spanning {date_range} days")
+            else:
+                logging.info(f"Successfully processed {len(df)} candles for {asset}")
+            
             return df
             
         except Exception as e:
